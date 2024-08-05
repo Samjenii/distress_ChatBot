@@ -109,7 +109,7 @@ pairs of data to help you through your objective
 """
 
 # Configure logging
-#logging.basicConfig(filename='error.log', level=logging.DEBUG)
+logging.basicConfig(filename='error.log', level=logging.DEBUG)
 
 # Configure the Google API key
 os.environ['GOOGLE_API_KEY'] = 'AIzaSyDgTNcfDVLHBHWttnJEVC-hTHfBMt8rKvs'
@@ -123,9 +123,8 @@ chat.send_message(previous_data)
 
 @app.route('/')
 def hello_world():
-    #app.logger.debug('Hello world endpoint was called')
-    #return "Distress Chatbot Home!"
-    return render_template(template_name_or_list='index.html')
+    app.logger.debug('Hello world endpoint was called')
+    return "Distress Chatbot Home!"
 
 @app.route('/gemini', methods=['POST'])
 def gemini_response_chat():
@@ -144,15 +143,3 @@ def gemini_response_chat():
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-"""def test():
-    try:
-        query = str(input("You:"))
-        response=chat.send_message(query)
-        print("CHATBOT: ",response.text, end="\n")
-        test()
-    except Exception as e:
-        print("ERROR:", e)"""
-
-
-#test()
